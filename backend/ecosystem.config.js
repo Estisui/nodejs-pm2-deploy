@@ -29,7 +29,7 @@ module.exports = {
       repo: 'https://github.com/Estisui/nodejs-pm2-deploy.git',
       path: DEPLOY_PATH,
       key: 'vm-6',
-      'pre-deploy': `scp ./*.env vm-6 ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'pre-deploy': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
       'post-deploy': 'npm i && npm run build',
     },
   },
