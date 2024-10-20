@@ -7,6 +7,7 @@ const {
   DEPLOY_HOST,
   DEPLOY_PATH,
   DEPLOY_REF = 'origin/master',
+  SSH_KEY_PATH,
 } = process.env;
 
 module.exports = {
@@ -29,7 +30,7 @@ module.exports = {
       repo: 'https://github.com/Estisui/nodejs-pm2-deploy.git',
       path: DEPLOY_PATH,
       key: 'vm-6',
-      'pre-deploy': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'pre-deploy': `scp -i ${SSH_KEY_PATH} .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
       'post-deploy': 'npm i && npm run build',
     },
   },
